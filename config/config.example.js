@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://enkwzlix:wlU-x9m3gsA5TIJF1-XqEGlAbt0GJQ4s@stampy.db.elephantsql.com:5432/enkwzlix",
+    "url": "",
     "dialect": "postgres"
   },
   "test": {
