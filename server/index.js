@@ -1,4 +1,5 @@
-const express = require('express');
+const express = require('express'),
+      models = require('./models/'),
       parser = require('body-parser'),
       morgan = require('morgan'),
       apiRoutes = require('./routes/api/'),
@@ -10,5 +11,15 @@ var app = express()
   .use(express.static('../public'))
   .use('/api', apiRoutes)
   .use(morgan(':method :url :status :res[content-length] - :response-time ms'));
-  
+
+
+models.sequelize
+  .authenticate()
+  .then(function () {
+    console.log('Connection successful');
+  })
+  .catch(function(error) {
+    console.log("Error creating connection:", error);
+  });
+
 app.listen(PORT, () => console.log(`server is listening at ${PORT}`))
