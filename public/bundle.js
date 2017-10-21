@@ -26173,7 +26173,7 @@ var Home = function (_Component) {
       var _this2 = this;
 
       _axios2.default.get('http://localhost:3000/api/movies').then(function (movies) {
-        return _this2.state.videos = movies;
+        return _this2.state.videos = movies.data;
       }).then(function () {
         return console.log(_this2.state.videos);
       }).catch(function (error) {

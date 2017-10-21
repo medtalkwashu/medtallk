@@ -14,7 +14,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3000/api/movies')
-    .then((movies) => this.state.videos = movies)
+    .then((movies) => this.state.videos = movies.data)
     .then(() => console.log(this.state.videos))
     .catch(error => console.log(`axios fetch movies error: ${error}`)); 
   }

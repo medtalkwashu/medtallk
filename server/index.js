@@ -8,9 +8,15 @@ const express = require('express'),
 var app = express()
   .use(parser.json())
   .use(parser.urlencoded({ extended: true }))
+  .use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+  .use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  })
   .use(express.static('../public'))
-  .use('/api', apiRoutes)
-  .use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+  .use('/api', apiRoutes);
+
 
 
 models.sequelize
