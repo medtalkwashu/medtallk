@@ -7,8 +7,9 @@ module.exports = {
     .catch(error => res.status(500).send(error));  
   },
   getMovieHandler: function(req, res) {
-    console.log(`hit a handler: get movie ${req.params.id}`)  
-    res.send('hit a handler: get movie')  
+    db.Movie.findOne({ id: req.params.id })
+    .then(movie => res.send(movie, 200))
+    .catch(error => res.status(500).send(error));  
   },
   createMovieHandler: function(req, res) {
     db.Movie.create(req.body)
@@ -16,8 +17,9 @@ module.exports = {
     .catch(error => res.status(500).send(error));     
   },
   deleteMovieHandler: function(req, res) {
-    console.log('hit a handler: delete movie')      
-    res.send('hit a handler: delete movie')      
+    db.Movie.destroy({ id: req.params.id })
+    .then(movie => res.send(movie, 200))
+    .catch(error => res.status(500).send(error));  
   },
   searchMoviesHandler: function(req, res) {
     console.log('hit a handler: search movies')      
