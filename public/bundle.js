@@ -26135,9 +26135,9 @@ var _Button = __webpack_require__(81);
 
 var _Button2 = _interopRequireDefault(_Button);
 
-var _Video = __webpack_require__(87);
+var _VideoList = __webpack_require__(116);
 
-var _Video2 = _interopRequireDefault(_Video);
+var _VideoList2 = _interopRequireDefault(_VideoList);
 
 var _axios = __webpack_require__(97);
 
@@ -26173,7 +26173,7 @@ var Home = function (_Component) {
       var _this2 = this;
 
       _axios2.default.get('http://localhost:3000/api/movies').then(function (movies) {
-        return _this2.state.videos = movies.data;
+        return _this2.setState({ videos: movies.data });
       }).then(function () {
         return console.log(_this2.state.videos);
       }).catch(function (error) {
@@ -26191,7 +26191,7 @@ var Home = function (_Component) {
           null,
           'Hello'
         ),
-        _react2.default.createElement(_Video2.default, { videos: this.state.videos })
+        _react2.default.createElement(_VideoList2.default, { videos: this.state.videos })
       );
     }
   }]);
@@ -26462,15 +26462,15 @@ var Video = function (_Component) {
         _react2.default.createElement(
           'h1',
           { className: 'title' },
-          this.props.title
+          this.props.video.title
         ),
         _react2.default.createElement(
           'h2',
           { className: 'physician' },
-          this.props.physician
+          this.props.video.physician
         ),
         _react2.default.createElement('iframe', {
-          src: this.props.url, allowFullScreen: true })
+          src: this.props.video.url, allowFullScreen: true })
       );
     }
   }]);
@@ -28093,6 +28093,111 @@ module.exports = function spread(callback) {
     return callback.apply(null, arr);
   };
 };
+
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Video = __webpack_require__(87);
+
+var _Video2 = _interopRequireDefault(_Video);
+
+__webpack_require__(117);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VideoList = function (_Component) {
+  _inherits(VideoList, _Component);
+
+  function VideoList(props) {
+    _classCallCheck(this, VideoList);
+
+    return _possibleConstructorReturn(this, (VideoList.__proto__ || Object.getPrototypeOf(VideoList)).call(this, props));
+  }
+
+  _createClass(VideoList, [{
+    key: 'render',
+    value: function render() {
+      var videos = this.props.videos ? this.props.videos.map(function (video, idx) {
+        return _react2.default.createElement(_Video2.default, { video: video, key: idx });
+      }) : null;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'video-list' },
+        videos
+      );
+    }
+  }]);
+
+  return VideoList;
+}(_react.Component);
+
+exports.default = VideoList;
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(118);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(36)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!./videoList.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!./videoList.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(35)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
 
 
 /***/ })

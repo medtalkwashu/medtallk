@@ -10,10 +10,10 @@ export default class VideoList extends Component {
   }
 
   render() {
-    const videos = this.props.videos.map((video, idx) => (
+    const videos = this.props.videos ? this.props.videos.map((video, idx) => (
       <Video video={video} key={idx}/>
-    ));
-
+    )) : null;
+    
     return (
       <div className="video-list">
         { videos }

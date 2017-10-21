@@ -10,10 +10,10 @@ export default class Video extends Component {
   render() {
     return (
       <div className="video">
-        <h1 className="title">{this.props.title}</h1>
-        <h2 className="physician">{this.props.physician}</h2>
+        <h1 className="title">{this.props.video.title}</h1>
+        <h2 className="physician">{this.props.video.physician}</h2>
         <iframe 
-          src={this.props.url} allowFullScreen>
+          src={this.props.video.url} allowFullScreen>
         </iframe>
       </div>
     );

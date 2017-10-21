@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Button/Button.jsx';
-import Video from '../Video/Video.jsx';
+import VideoList from '../VideoList/VideoList.jsx';
 import axios from 'axios';
 import './home.css';
 
@@ -14,7 +14,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3000/api/movies')
-    .then((movies) => this.state.videos = movies.data)
+    .then((movies) => this.setState({ videos: movies.data }))
     .then(() => console.log(this.state.videos))
     .catch(error => console.log(`axios fetch movies error: ${error}`)); 
   }
@@ -25,7 +25,7 @@ export default class Home extends Component {
         <h1>
           Hello
         </h1>
-        <Video videos={this.state.videos}/>
+        <VideoList videos={this.state.videos}/>
       </div>
     );
   }
